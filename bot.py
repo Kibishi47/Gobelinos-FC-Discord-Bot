@@ -1,0 +1,37 @@
+import discord
+from discord.ext import commands
+import config
+import os
+
+class FootBot(commands.Bot):
+    
+    def __init__(self, command_prefix, intents, app_id):
+        super().__init__(command_prefix=command_prefix, intents=intents, id=app_id)
+        self.remove_command("help")  # Optional: override with custom help
+
+    async def setup_hook(self):
+        print("Loading cogs ...")
+        for filename in os.listdir('./commands'):
+            if filename.endswith('.py') and filename != '__init__.py':
+                try:
+                    await self.load_extension(f'commands.{filename[:-3]}')
+                    print(f'Cog loaded: {filename[:-3]}')
+                except Exception as e:
+                    print(f'Error loading cog {filename[:-3]}: {e}')
+        await self.tree.sync()
+
+    async def on_ready(self):
+        print(f"{self.user} est connecté !")
+
+    async def on_message(self, message):
+        if message.author == self.user:
+            return
+        print(message.content)
+        await self.process_commands(message)
+
+# Création du bot avec intents explicites
+intents = discord.Intents.default()
+intents.message_content = True
+#command_prefix=config.PREFIX, intents=intents
+bot = FootBot(command_prefix=config.PREFIX, intents=intents, app_id=config.APPLICATION_ID)
+bot.run(config.TOKEN)
