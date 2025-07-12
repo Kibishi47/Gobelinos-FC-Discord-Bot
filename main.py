@@ -7,7 +7,7 @@ import os
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = commands.Bot(command_prefix="/", intents=intents)
+bot = commands.Bot(command_prefix=config.PREFIX, intents=intents)
 
 # Événement de démarrage
 @bot.event
@@ -19,7 +19,7 @@ async def on_message(message):
     print(message.content)
 
     # Traitement des commandes activé
-    await bot.process_commands(message)
+    await bot.process_commands(message) 
 
 
 @bot.command()  # Appel avec !salut
