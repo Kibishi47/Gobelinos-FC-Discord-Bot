@@ -28,10 +28,3 @@ class FootBot(commands.Bot):
             return
         print(message.content)
         await self.process_commands(message)
-
-# Création du bot avec intents explicites
-intents = discord.Intents.default()
-intents.message_content = True
-#command_prefix=config.PREFIX, intents=intents
-bot = FootBot(command_prefix=config.PREFIX, intents=intents, app_id=config.APPLICATION_ID)
-bot.run(config.TOKEN)

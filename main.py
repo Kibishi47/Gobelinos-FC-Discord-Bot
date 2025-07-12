@@ -4,5 +4,9 @@ import config
 import os
 from bot import FootBot
 
-fb = FootBot()
+# Création du bot avec intents explicites
+intents = discord.Intents.default()
+intents.message_content = True
 
+bot = FootBot(command_prefix=config.PREFIX, intents=intents, app_id=config.APPLICATION_ID)
+bot.run(config.TOKEN)
