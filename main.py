@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
-import config
+import discordBot.config as config
 import os
-from bot import FootBot
+from discordBot.bot import FootBot
 
 # Création du bot avec intents explicites
 intents = discord.Intents.default()
