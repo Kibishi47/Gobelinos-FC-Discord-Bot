@@ -1,2 +1,6 @@
 DISCORD_TOKEN=""
 APPLICATION_ID=""
+
+Gobelinos_API_URL=""
+Gobelinos_API_EMAIL=""
+Gobelinos_API_PASSWORD=""

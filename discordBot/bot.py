@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import discordBot.config as config
+import config as config
 import os
 import pathlib
 
