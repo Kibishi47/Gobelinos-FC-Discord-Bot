@@ -10,7 +10,7 @@ class Fun(commands.Cog):
     async def ping(self, interaction: discord.Interaction):
        await interaction.response.send_message("pong")
 
-    @app_commands.command(description='Say hello')
+    @app_commands.command(description='Say hello to the user')
     async def hello(self, interaction: discord.Interaction):
         await interaction.response.send_message(f'Bonjour, {interaction.user.mention} !')
 
