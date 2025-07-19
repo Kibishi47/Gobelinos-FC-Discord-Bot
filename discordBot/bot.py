@@ -6,10 +6,11 @@ import pathlib
 
 class FootBot(commands.Bot):
     
-    def __init__(self, command_prefix, intents, app_id):
+    def __init__(self, command_prefix, intents, app_id, apiService=None):
         super().__init__(command_prefix=command_prefix, intents=intents, id=app_id)
         self.remove_command("help")  # Optional: override with custom help
         self.COGS_DIR = pathlib.Path(__file__).parent / "cogs"
+        self.apiService = apiService
 
     async def setup_hook(self):
         for filename in os.listdir(self.COGS_DIR):
